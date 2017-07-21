@@ -8,7 +8,9 @@ import { GoogleGeoApiService } from './../google-geo-api.service';
   providers: [GoogleGeoApiService]
 })
 export class GeocodingComponent implements OnInit {
+
   searchedLngLat: any = null;
+  searchQuery: string = null;
 
   constructor(
     private geoService: GoogleGeoApiService
@@ -19,6 +21,7 @@ export class GeocodingComponent implements OnInit {
 
   getLngLat(address: string): void {
     if (address)
+      this.searchQuery = address;
       this.geoService.geocode(address).subscribe(data => {
         this.searchedLngLat = data.json().results[0].geometry.location;
       });

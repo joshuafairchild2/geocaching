@@ -1,3 +1,14 @@
-<p>
-  reverse-geocoding works!
-</p>
+<h3>Convert latitude/longitude coordinates to an address</h3>
+<div class="well">
+  <div class="form-group">
+    <input type="text" class='form-control' placeholder="Latitude" #lat>
+  </div>
+  <div class="form-group">
+    <input type="text" class='form-control' placeholder="Longitude" #lng>
+  </div>
+  <button class="btn btn-primary" (click)='getAddress(lat.value, lng.value); lat.value=""; lng.value=""'>Get Address</button>
+  <div *ngIf='searchedAddress'>
+    <h3>Address: {{searchedAddress}} <span><button class='btn btn-xs' (click)='searchedAddress=null'>Clear search</button></span></h3>
+    <h3><small>From {{searchQuery}}</small></h3>
+  </div>
+</div>

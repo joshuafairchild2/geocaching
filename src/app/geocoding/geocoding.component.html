@@ -4,5 +4,8 @@
     <input type="text" class='form-control' placeholder="Street address to convert" #address>
   </div>
   <button class="btn btn-primary" (click)='getLngLat(address.value); address.value=""'>Get coordinates</button>
-  <h3 *ngIf='searchedLngLat'>Latitude: {{searchedLngLat.lat}}, Longitude: {{searchedLngLat.lng}} <span><button class='btn btn-xs' (click)='searchedLngLat=null'>Clear search</button></span></h3>
+  <div *ngIf='searchedLngLat'>
+    <h3>Latitude: {{searchedLngLat.lat}}, Longitude: {{searchedLngLat.lng}} <span><button class='btn btn-xs' (click)='searchedLngLat=null'>Clear search</button></span></h3>
+    <h3><small>From {{searchQuery}}</small></h3>
+  </div>
 </div>
