@@ -1,0 +1,8 @@
+<h3>Convert an address to longitute/latitude coordinates</h3>
+<div class="well">
+  <div class="form-group">
+    <input type="text" class='form-control' placeholder="Street address to convert" #address>
+  </div>
+  <button class="btn btn-primary" (click)='getLngLat(address.value); address.value=""'>Get coordinates</button>
+  <h3 *ngIf='searchedLngLat'>Results!</h3>
+</div>

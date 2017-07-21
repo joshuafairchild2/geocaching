@@ -1,0 +1,17 @@
+{
+  "name": "geocaching",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Joshua Fairchild <Joshua.fairchild429@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/joshuafairchild1/geocaching",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
