@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleGeoApiService } from './../google-geo-api.service';
+import * as isCoordinates from 'is-coordinates';
 
 @Component({
   selector: 'app-reverse-geocoding',
@@ -20,9 +21,10 @@ export class ReverseGeocodingComponent implements OnInit {
   }
 
   getAddress(lat: string, lng: string): void {
-    this.geoService.reverseGeocode(lat,lng).subscribe(data => {
-      this.searchQuery = `lat: ${lat}, long: ${lng}`;
-      this.searchedAddress = data.json().results[0].formatted_address;
-    });
+    if (isCoordinates([Number(lat), Number(lng)]))
+      this.geoService.reverseGeocode(lat,lng).subscribe(data => {
+        this.searchQuery = `lat: ${lat}, long: ${lng}`;
+        this.searchedAddress = data.json().results[0].formatted_address;
+      });
   }
 }
