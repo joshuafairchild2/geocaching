@@ -1,18 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleGeoApiService } from './../google-geo-api.service';
 
 @Component({
   selector: 'app-geocoding',
   templateUrl: './geocoding.component.html',
-  styleUrls: ['./geocoding.component.css']
+  styleUrls: ['./geocoding.component.css'],
+  providers: [GoogleGeoApiService]
 })
 export class GeocodingComponent implements OnInit {
+  searchedLngLat: any = null;
 
-  constructor() { }
+  constructor(
+    private geoService: GoogleGeoApiService
+  ) { }
 
   ngOnInit() {
   }
 
   getLngLat(address: string): void {
-    console.log(address)
+    if (address)
+      this.geoService.geocode(address).subscribe(data => {
+        this.searchedLngLat = data.json().results[0].geometry.location;
+      });
   }
 }
